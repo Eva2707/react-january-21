@@ -6,21 +6,15 @@ class Message extends React.Component{
         super(props)
 
         this.state = {
-            message: this.props.message,
             messageBot: 'hello, i am a Bot, thanks',
             bot: 'bot'
         }
     }
-
-    shouldComponentUpdate(){
-        return true
-    }
-
     render  () {
         return  <div>
                     <div className='wrap'>
-                        <p className='author'>{this.state.message?.user}:</p>
-                        <p className='author'>{this.state.message?.text}</p>
+                        <p className='author'>{this.props.message?.user}:</p>
+                        <p className='author'>{this.props.message?.text}</p>
                     </div>
                     <div className='wrap'>
                         <p className='message'>{this.state.bot}:</p>

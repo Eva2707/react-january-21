@@ -6,8 +6,11 @@ class MessageField extends React.Component{
 
     state = {
         text: '',
-        messages: []
+        message: '',
+        user: 'me'
     }
+
+     messages = [];
 
 
     change = (e) => {
@@ -15,22 +18,16 @@ class MessageField extends React.Component{
     }
 
     save = (e) => {
-        this.state.messages.push({text: this.state.text, user: "me"})
+        this.messages.push({text: this.state.text, user: "me"})
+        this.setState({message: this.state.text})
         e.preventDefault()
         this.setState({text : ""})
     }
 
-    shouldComponentUpdate (nextState){
-        if (this.state.text !== nextState.text){
-            return true
-        } 
-        return false
-    }
-    
     render  () {
         return <div>
                     {
-                        this.state.messages.map((message, i) => 
+                        this.messages.map((message, i) => 
                             <Message key={i} message={message}></Message>
                         )
                     }
