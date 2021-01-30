@@ -1,6 +1,8 @@
 import * as React from 'react'
 import Message from './message';
 import '../App.css';
+import Button from '@material-ui/core/Button';
+import { FormGroup } from '@material-ui/core';
 
 class MessageField extends React.Component{
 
@@ -23,7 +25,7 @@ class MessageField extends React.Component{
         e.preventDefault()
         this.setState({text : ""})
     }
-
+      
     render  () {
         return <div>
                     {
@@ -31,11 +33,18 @@ class MessageField extends React.Component{
                             <Message key={i} message={message}></Message>
                         )
                     }
-                    <form onSubmit={this.save}>
-                        <input type="text" name="name" value={this.state.text} onChange={this.change}/>
-                        <input className='bot-message'type="submit" value="отправить"/>
-                    </form>
+                    <FormGroup onSubmit={this.save}>
+                        <input type="text" name="name" value={this.state.text} onChange={this.change} placeholder={"Введите сообщение"}/>
+                            <Button
+                                className={'btn'}
+                                variant="contained"
+                                color="primary"
+                                onClick={this.save}
+                                type={'submit'}
+                            >Send
+                            </Button>
+                    </FormGroup>
                 </div>
             }
 }
-export default MessageField;  
+export default MessageField; 
